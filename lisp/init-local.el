@@ -9,8 +9,12 @@
 ;;; Code:
 (add-to-list 'auto-mode-alist '("\\.dust\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vm\\'" . web-mode))
 (setq web-mode-engines-alist
       '(("dust"    . "\\.dust\\'")
+        ("handlebars" . "\\.hbs\\'")
+        ("velocity" . "\\.vm\\'")
         ("freemarker" . "\\.ftl\\'")))
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -22,6 +26,9 @@
   (setq web-mode-block-padding 2))
 
 (add-hook 'web-mode-hook  'my-web-mode-hook)
+
+(require 'editorconfig)
+(editorconfig-mode 1)
 
 ;;; ls-mode
                                         ;(require 'livescript-mode)
